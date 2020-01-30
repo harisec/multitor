@@ -38,6 +38,9 @@ function CreateTorProcess() {
   # shellcheck disable=SC2154
   echo "HashedControlPassword ${_pass_hash}" > "${_torrc_config}"
   _kstate="$?"
+  
+  # only US exitnodes
+  echo "ExitNodes {us}" >> "${_torrc_config}"
 
   if [[ $_kstate -eq 0 ]] ; then
 
